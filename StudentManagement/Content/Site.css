@@ -1,0 +1,137 @@
+﻿@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/* Navbar */
+.navbar-default {
+    background-color: #4B345D;
+    border-color: #E7E7E7;
+}
+    /* Title */
+    .navbar-default .navbar-brand {
+        color: #CDCDCE;
+    }
+
+        .navbar-default .navbar-brand:hover,
+        .navbar-default .navbar-brand:focus {
+            color: white;
+        }
+    /* Link */
+    .navbar-default .navbar-nav > li > a {
+        color: #CDCDCE;
+    }
+
+        .navbar-default .navbar-nav > li > a:hover,
+        .navbar-default .navbar-nav > li > a:focus {
+            color: white;
+        }
+
+    .navbar-default .navbar-nav > .active > a,
+    .navbar-default .navbar-nav > .active > a:hover,
+    .navbar-default .navbar-nav > .active > a:focus {
+        color: #555;
+        background-color: #E7E7E7;
+    }
+
+    .navbar-default .navbar-nav > .open > a,
+    .navbar-default .navbar-nav > .open > a:hover,
+    .navbar-default .navbar-nav > .open > a:focus {
+        color: #555;
+        background-color: #D5D5D5;
+    }
+    /* Caret */
+    .navbar-default .navbar-nav > .dropdown > a .caret {
+        border-top-color: #CDCDCE;
+        border-bottom-color: #CDCDCE;
+    }
+
+    .navbar-default .navbar-nav > .dropdown > a:hover .caret,
+    .navbar-default .navbar-nav > .dropdown > a:focus .caret {
+        border-top-color: #333;
+        border-bottom-color: #333;
+    }
+
+    .navbar-default .navbar-nav > .open > a .caret,
+    .navbar-default .navbar-nav > .open > a:hover .caret,
+    .navbar-default .navbar-nav > .open > a:focus .caret {
+        border-top-color: #555;
+        border-bottom-color: #555;
+    }
+    /* Mobile version */
+    .navbar-default .navbar-toggle {
+        border-color: #DDD;
+    }
+
+        .navbar-default .navbar-toggle:hover,
+        .navbar-default .navbar-toggle:focus {
+            background-color: #DDD;
+        }
+
+        .navbar-default .navbar-toggle .icon-bar {
+            background-color: #CCC;
+        }
+
+@media (max-width: 767px) {
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+        color: #CDCDCE;
+    }
+
+        .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+        .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+            color: #333;
+        }
+}
+
+
+/*Buttons*/
+.btn-info {
+    background-color: darkgray !important;
+    border: 1px solid black !important;
+}
+
+.btn-primary {
+    background-color: #4B345D;
+}
+
+    .btn-primary:hover {
+        background-color: #D2096B;
+    }
+
+    .btn-primary:focus {
+        background-color:darkgray;
+    }
+
+.dropdown > .btn-primary:focus, .dropdown-menu > li > a:hover {
+    background-color: #D2096B;
+}
+
+/*Pagination*/
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+    background-color: #4B345D;
+    z-index: 2;
+}
+

@@ -1,0 +1,42 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+
+@model IPagedList<StudentManagement.Models.StudentViewModel>
+@{
+    ViewBag.Title = "Status Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h2>List of students</h2>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Student ID</th>
+                <th>Student Name</th>
+                <th>Student Info</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StudentID)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+
+                    <td>
+                        <a href="~/Details/Index/@item.StudentID" class="btn btn-primary" role="button">Show Details</a>
+                        <a href="~/Cases/Index/@item.StudentID" class="btn btn-primary" role="button">Show Cases</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    @Html.PagedListPager(Model, page => Url.Action("Status", new { page, status =  Request.QueryString["status"]}), new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded})
+</div>
+<a href="~/Home/Index/" class="btn btn-primary" role="button">Back</a>

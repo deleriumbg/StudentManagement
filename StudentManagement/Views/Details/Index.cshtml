@@ -1,0 +1,83 @@
+﻿@model StudentManagement.Models.DetailsViewModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 id="mode">View Mode</h2>
+<hr />
+
+@using (Html.BeginForm($"Edit/{Model.StudentId}", "Details", FormMethod.Post, new { @id = "details-form", @class = "form-horizontal" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(m => m.StudentId)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @id = "firstName", @class = "form-control", @readonly = "readonly" } })
+            @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @id = "lastName", @class = "form-control", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.StudentStatus, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EnumDropDownListFor(model => model.StudentStatus, new { @id = "studentStatus", @class = "form-control", @disabled = "true" })
+                @Html.ValidationMessageFor(model => model.StudentStatus, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Program, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Program, new { htmlAttributes = new { @id = "program", @class = "form-control", @readonly = "readonly" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProgramAdvisor, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ProgramAdvisor, new { htmlAttributes = new { @id = "programAdvisor", @class = "form-control", @readonly = "readonly" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="button" class="btn btn-primary" id="editBtn" onclick="removeReadonly()">Edit</button>
+                <button type="submit" class="btn btn-primary" id="saveBtn" style="display: none">Save</button>
+            </div>
+        </div>
+}
+<hr />
+<a href="~/Home/Index/" class="btn btn-primary" role="button">Back</a>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/custom-validator")
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

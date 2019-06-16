@@ -1,0 +1,64 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+
+@model IPagedList<StudentManagement.Models.StudentViewModel>
+@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12 school-options-dropdown text-center">
+        <div class="dropdown btn-group">
+
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                Student Status
+                <span class="caret"></span>
+            </button>
+
+            <ul class="dropdown-menu">
+                <li><a href="~/Home/Status/?status=1">Enrolled</a></li>
+                <li><a href="~/Home/Status/?status=2">Graduated</a></li>
+                <li><a href="~/Home/Status/?status=3">Never Matriculated</a></li>
+                <li><a href="~/Home/Status/?status=4">On Hold</a></li>
+                <li><a href="~/Home/Status/?status=7">Unenrolled</a></li>
+            </ul>
+
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <h2>List of students</h2>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Student ID</th>
+                <th>Student Name</th>
+                <th>Student Info</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StudentID)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+
+                    <td>
+                        <a href="~/Details/Index/@item.StudentID" class="btn btn-primary" role="button">Show Details</a>
+                        <a href="~/Cases/Index/@item.StudentID" class="btn btn-primary" role="button">Show Cases</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded })
+</div>
+
+ 

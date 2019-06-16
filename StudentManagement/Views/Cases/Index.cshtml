@@ -1,0 +1,59 @@
+﻿@model List<StudentManagement.Models.CaseViewModel>
+@{
+    ViewBag.Title = "Cases Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Cases</h2>
+
+@using (Html.BeginForm("Index", "Cases", FormMethod.Get))
+{
+    @Html.TextBox("search")  <input type="submit" value="Search" class="btn btn-primary"/>
+}
+
+<div class="container">
+    
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Subject</th>
+                <th>Case Title</th>
+                <th>Case Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Subject)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CaseTitle)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CaseStatus)
+                    </td>
+                    @if (item.CaseStatus == "Open")
+                    {
+                        <td>
+                            @using (Html.BeginForm("Resolve", "Cases", new { caseId = item.CaseId, studentId = item.StudentId }, FormMethod.Post))
+                            {
+                                <input type="submit" value="Resolve" class="btn btn-primary" />
+                            }
+                        </td>
+                    }else
+	                {
+                    <td>
+                        <input type="submit" value="Resolve" class="btn btn-info disabled" />
+                    </td>
+	                }
+                </tr>
+                }
+        </tbody>
+    </table>
+</div>
+<a href="~/Home/Index/" class="btn btn-primary" role="button">Back</a>
