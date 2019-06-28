@@ -1,6 +1,7 @@
 # Student Management System
 
 Task: 
+
   Create a web ASP.NET Framework MVC project called Student Management. 
 The project should retrieve data from Dynamics CRM and display the following pages:
 
@@ -12,6 +13,9 @@ The project should retrieve data from Dynamics CRM and display the following pag
 	
   
 Notes: 
-  a. All retrieved records should be active records in the CRM.
+
+  a. All retrieved records should be active records in the CRM. 
+  
   b. The connection to Dynamics CRM should be done via singleton class.
+  
   c. Early Bound entity class should be used.
